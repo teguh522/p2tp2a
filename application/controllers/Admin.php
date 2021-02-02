@@ -126,6 +126,47 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('msg', 'Berhasil di Update!');
         redirect('admin/pengaduan');
     }
+    function datautama()
+    {
+        $id_row = $this->input->get('id');
+        $data['getrow'] = $this->Muser->get_data('id_user', $id_row, 'datautama');
+        if ($data['getrow'] == null) {
+            $data['action'] = base_url('admin/datautama_create');
+        } else {
+            $data['action'] = base_url('admin/datautama_update');
+        }
+        $data['kecamatan'] = $this->Muser->get_data_all('tbl_kecamatan', 'id_kecamatan', 'DESC');
+        $this->load->view('vheaderlogin');
+        $this->load->view('vmenu');
+        $this->load->view('admin/vdatautama', $data);
+        $this->load->view('vfooterlogin');
+    }
+    public function datautama_create()
+    {
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'nama' => $this->input->post('nama'),
+            'ka_upt' => $this->input->post('kecamatan'),
+            'foto' => "user.png",
+
+        );
+        $this->Muser->create_data('datautama', $data);
+        $this->session->set_flashdata('msg', 'Berhasil di simpan!');
+        redirect('adminconfig/tambahadmin');
+    }
+    function datautama_update()
+    {
+        $id = $this->input->post('id_datautama');
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'nama' => $this->input->post('nama'),
+            'ka_upt' => $this->input->post('kecamatan'),
+            'foto' => "user.png",
+        );
+        $this->Muser->update_data('id_datautama', $id, $data, 'datautama');
+        $this->session->set_flashdata('msg', 'Berhasil di Update!');
+        redirect('adminconfig/tambahadmin');
+    }
     function delete()
     {
         $func = $this->input->get('func');
@@ -134,6 +175,10 @@ class Admin extends CI_Controller
             $this->Muser->delete('id_pengaduan', $id, 'tbl_pengaduan');
             $this->session->set_flashdata('msg', 'Terhapus!');
             redirect('admin/pengaduan');
+        } elseif ($func == 'deleteadmin') {
+            $this->Muser->delete('id_auth', $id, 'auth');
+            $this->session->set_flashdata('msg', 'Terhapus!');
+            redirect('adminconfig/tambahadmin');
         }
     }
     public function printlaporan()

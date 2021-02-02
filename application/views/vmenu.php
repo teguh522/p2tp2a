@@ -67,6 +67,7 @@
                         <li><a href="<?php echo base_url() ?>admin"><i class="icon-home"></i><span>Dashboard</span></a></li>
                         <li><a href="<?php echo base_url() ?>admin/pengaduan"><i class="icon-notebook"></i><span>Pengaduan</span></a></li>
                         <li><a href="<?php echo base_url() ?>admin/table"><i class="icon-list"></i><span>Tabel Rekap</span></a></li>
+                        <li><a href="<?php echo base_url() ?>adminconfig/tambahadmin"><i class="icon-users"></i><span>Tambah User</span></a></li>
                     <?php } ?>
                 </ul>
             </nav>

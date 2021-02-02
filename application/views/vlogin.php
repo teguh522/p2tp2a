@@ -22,9 +22,9 @@
                         <input type="password" name="password" required class="form-control round" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-primary btn-round btn-block">LOGIN</button>
-                    <div class="mt-4">
+                    <!-- <div class="mt-4">
                         <span>Belum Punya Akun? <a href="<?php echo base_url() ?>auth/register">Daftar</a></span>
-                    </div>
+                    </div> -->
                 </form>
                 <div class="pattern">
                     <span class="red"></span>

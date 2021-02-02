@@ -45,7 +45,7 @@ class Adminconfig extends CI_Controller
         } else {
             $data['action'] = base_url('adminconfig/create_admin');
         }
-        $data['hasil'] = $this->Muser->get_data_allarray('level', 'admin', 'auth');
+        $data['hasil'] = $this->Muser->get_data_all('auth', 'id_auth', 'DESC');
         $this->load->view('vheaderlogin');
         $this->load->view('vmenu');
         $this->load->view('admin/vtambahadmin', $data);
@@ -55,13 +55,14 @@ class Adminconfig extends CI_Controller
     {
         $email = $this->input->post('email');
         $pass = $this->input->post('password');
+        $level = $this->input->post('level');
         $hash = password_hash($pass, PASSWORD_DEFAULT);
         $cek = $this->Mauth->cek_email($email);
         if (!$cek) {
             $data = array(
                 'email' => $email,
                 'password' => $hash,
-                'level' => 'admin'
+                'level' => $level
             );
             $this->Mauth->create_akun('auth', $data);
             $this->session->set_flashdata('msg', 'Create Account Success !! ');
