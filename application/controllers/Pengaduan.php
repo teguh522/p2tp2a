@@ -123,15 +123,15 @@ class Pengaduan extends CI_Controller
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'smtp.gmail.com',
-            'smtp_user' => 'ithasnamedikagroup@gmail.com',  // Email gmail
-            'smtp_pass'   => 'Hasnamedika1',  // Password gmail
+            'smtp_user' => 'pengaduan.p2tp2a@gmail.com',  // Email gmail
+            'smtp_pass'   => 'B1smillah',  // Password gmail
             'smtp_crypto' => 'ssl',
             'smtp_port'   => 465,
             'crlf'    => "\r\n",
             'newline' => "\r\n"
         ];
         $this->load->library('email', $config);
-        $this->email->from('no-reply@ithasnamedikagroup.com', 'Info P2TP2A');
+        $this->email->from('no-reply@pengaduan.p2tp2a@gmail.com', 'Info P2TP2A');
         $this->email->to('martino.uci85@gmail.com');
         $this->email->subject('Notifikasi Kasus Baru');
         $this->email->message($pesan);
